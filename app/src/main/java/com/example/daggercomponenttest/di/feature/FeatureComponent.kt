@@ -11,6 +11,12 @@ import javax.inject.Scope
 @FeatureScope
 interface FeatureComponent {
 
+    @Component.Builder
+    interface Builder {
+        fun dependencies(dependencies: Dependencies): Builder
+        fun build(): FeatureComponent
+    }
+
     interface Dependencies {
         val textGenerator: TextGenerator
     }
