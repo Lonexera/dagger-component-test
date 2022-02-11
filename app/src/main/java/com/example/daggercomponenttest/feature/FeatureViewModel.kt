@@ -15,7 +15,7 @@ class FeatureViewModel(
 
     val text: Flow<String> = flow {
         emit(
-        textGenerator.generateText() + featureTextGenerator.generateFeatureText()
+            textGenerator.generateText() + featureTextGenerator.generateFeatureText()
         )
     }
 

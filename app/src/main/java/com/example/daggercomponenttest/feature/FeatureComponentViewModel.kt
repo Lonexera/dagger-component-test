@@ -8,7 +8,7 @@ import com.example.daggercomponenttest.di.feature.featureDependenciesProvider
 
 class FeatureComponentViewModel(
     application: Application
-    ) : AndroidViewModel(application) {
+) : AndroidViewModel(application) {
 
     val featureComponent: FeatureComponent by lazy {
         DaggerFeatureComponent.builder()

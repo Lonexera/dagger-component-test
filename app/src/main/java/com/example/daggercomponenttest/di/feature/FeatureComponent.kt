@@ -30,14 +30,12 @@ interface FeatureComponent {
 }
 
 interface FeatureDependenciesProvider {
-
     val dependencies: FeatureComponent.Dependencies
 }
 
-// TODO what is this????
 val Context.featureDependenciesProvider: FeatureDependenciesProvider
 get() = when (this) {
     is FeatureDependenciesProvider -> this
     is Application -> error("Application must implement FeatureDependenciesProvider")
-    else -> applicationContext.featureDependenciesProvider
+    else -> applicationContext.featureDependenciesProvider // TODO smartcast??
 }
