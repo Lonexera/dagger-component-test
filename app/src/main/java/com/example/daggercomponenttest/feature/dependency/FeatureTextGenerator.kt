@@ -1,4 +1,4 @@
-package com.example.daggercomponenttest.somedependency
+package com.example.daggercomponenttest.feature.dependency
 
 class FeatureTextGenerator {
 

@@ -1,8 +1,14 @@
 package com.example.daggercomponenttest.di.feature
 
-import com.example.daggercomponenttest.somedependency.TextGenerator
+import android.app.Application
+import android.content.Context
+import com.example.daggercomponenttest.feature.FeatureActivity
+import com.example.daggercomponenttest.main.dependency.TextGenerator
 import dagger.Component
 import javax.inject.Scope
+
+@Scope
+annotation class FeatureScope
 
 @Component(
     modules = [FeatureModule::class],
@@ -10,6 +16,7 @@ import javax.inject.Scope
 )
 @FeatureScope
 interface FeatureComponent {
+    fun inject(featureActivity: FeatureActivity)
 
     @Component.Builder
     interface Builder {
@@ -22,5 +29,15 @@ interface FeatureComponent {
     }
 }
 
-@Scope
-annotation class FeatureScope
+interface FeatureDependenciesProvider {
+
+    val dependencies: FeatureComponent.Dependencies
+}
+
+// TODO what is this????
+val Context.featureDependenciesProvider: FeatureDependenciesProvider
+get() = when (this) {
+    is FeatureDependenciesProvider -> this
+    is Application -> error("Application must implement FeatureDependenciesProvider")
+    else -> applicationContext.featureDependenciesProvider
+}

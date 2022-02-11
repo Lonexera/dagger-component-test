@@ -1,4 +1,4 @@
-package com.example.daggercomponenttest.somedependency
+package com.example.daggercomponenttest.main.dependency
 
 
 class TextGenerator {
