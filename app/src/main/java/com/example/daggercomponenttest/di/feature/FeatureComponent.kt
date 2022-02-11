@@ -37,5 +37,5 @@ val Context.featureDependenciesProvider: FeatureDependenciesProvider
 get() = when (this) {
     is FeatureDependenciesProvider -> this
     is Application -> error("Application must implement FeatureDependenciesProvider")
-    else -> applicationContext.featureDependenciesProvider // TODO smartcast??
+    else -> applicationContext.featureDependenciesProvider
 }
