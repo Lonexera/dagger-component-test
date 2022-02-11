@@ -1,7 +1,13 @@
 package com.example.daggercomponenttest.di
 
+import com.example.daggercomponenttest.somedependency.TextGenerator
 import dagger.Module
+import dagger.Provides
 
 @Module
-interface AppModule {
+class AppModule {
+
+    @Provides
+    @AppScope
+    fun provideTextGenerator(): TextGenerator = TextGenerator()
 }
